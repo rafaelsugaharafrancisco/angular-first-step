@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+      <h2>Novo usuário</h2>
+    </div>
+</div>
+<div class="card">
+    <form class="card-body" #form="ngForm" (ngSubmit)="cadastrar(form)" method="post">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input class="form-control"id="nome" type="text" name="name" [(ngModel)]="usuario.name"/> 
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input class="form-control" id="email" type="email" name="email" [(ngModel)]="usuario.email"/> 
+        </div>
+        <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input class="form-control" id="cpf" type="text" name="cpf" [(ngModel)]="usuario.cpf"/> 
+        </div>
+        <div class="form-group">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <input class="form-control" id="dataNascimento" type="date" name="birthDate" [(ngModel)]="usuario.birthDate"/> 
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+    </form>
+</div>
