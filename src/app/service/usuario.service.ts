@@ -13,7 +13,7 @@ export class UsuarioService {
 
     constructor(private http: HttpClient){}
 
-    public gravar(usuario: Usuario): any {
-        return this.http.post(this.usersUrl, usuario);
+    public gravar(usuario: Usuario): Observable<Usuario> {
+        return this.http.post<Usuario>(this.usersUrl, usuario);
     }
 }

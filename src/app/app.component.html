@@ -1,3 +1,13 @@
 <u-welcome></u-welcome>
-<u-novo-usuario></u-novo-usuario>
-
+<u-novo-usuario (aoTransferir)="mostraUsuario($event)"></u-novo-usuario>
+<div class="card border-success m-1" [hidden]="!usuario.name">
+    <div class="card-header text-success text-center">Usuário cadastrado!</div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item">Nome: {{ usuario.name }}</li>
+        <li class="list-group-item">E-mail: {{ usuario.email }}</li>
+        <li class="list-group-item">CPF: {{ usuario. cpf }}</li>
+        <li class="list-group-item">Data de Nascimento: {{ usuario.birthDate | date: 'dd/MM/yyyy' }} </li>
+        </ul>
+    </div>
+</div>
