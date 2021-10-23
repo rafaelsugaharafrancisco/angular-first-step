@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
 import { UsuarioService } from "../service/usuario.service";
+import { Usuario } from '../model/usuario';
 
 @Component({
     selector: 'u-novo-usuario',
@@ -9,11 +10,12 @@ import { UsuarioService } from "../service/usuario.service";
 })
 export class NovoUsuarioComponent {
 
-    usuario: any = {}
+    private usuario = new Usuario();
 
     constructor(private service: UsuarioService){}
+    
+    public cadastrar(): void {
 
-    public cadastrar(form: FormGroup): void {
-        this.service.gravar(this.usuario).subscribe(resposta => console.log('adicionado'));
+        this.service.gravar(this.usuario).subscribe(resposta => console.log(resposta));
     }
 }

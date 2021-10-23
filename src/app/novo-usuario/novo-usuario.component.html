@@ -4,10 +4,10 @@
     </div>
 </div>
 <div class="card">
-    <form class="card-body" #form="ngForm" (ngSubmit)="cadastrar(form)" method="post">
+    <form class="card-body" #form="ngForm" (ngSubmit)="cadastrar()">
         <div class="form-group">
             <label for="nome">Nome</label>
-            <input class="form-control"id="nome" type="text" name="name" [(ngModel)]="usuario.name"/> 
+            <input class="form-control"id="nome" type="text" name="nome" [(ngModel)]="usuario.name"/> 
         </div>
         <div class="form-group">
             <label for="email">E-mail</label>
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             <label for="dataNascimento">Data de Nascimento</label>
-            <input class="form-control" id="dataNascimento" type="date" name="birthDate" [(ngModel)]="usuario.birthDate"/> 
+            <input class="form-control" id="dataNascimento" type="date" name="dataNascimento" [(ngModel)]="usuario.birthDate"/> 
         </div>
         <div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
