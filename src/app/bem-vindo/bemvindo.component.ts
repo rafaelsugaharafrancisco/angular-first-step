@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
     templateUrl: './bemvindo.component.html'
 })
 export class BemVindoComponent {
-    title = 'app Usuario';
-    url='https://cdn-icons-png.flaticon.com/512/44/44948.png';
+    title = 'app Usuário';
+    url='https://www.pngitem.com/pimgs/m/301-3010472_pessoa-olhando-para-o-computador-em-png-transparent.png';
     alt='logo user';
 }

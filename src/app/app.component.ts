@@ -14,7 +14,7 @@ export class AppComponent {
 
   public exibirNovoUsuario($event): void {
     this.usuario = $event;
-    this.usuarios.push($event);
+    this.usuarios.push(this.usuario);
     console.log(this.usuario);
   }
 }
