@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Output } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { UsuarioService } from "../service/usuario.service";
 import { Usuario } from '../model/usuario';
+
 
 @Component({
     selector: 'u-novo-usuario',
@@ -9,16 +11,17 @@ import { Usuario } from '../model/usuario';
 })
 export class NovoUsuarioComponent {
 
-    private usuario = new Usuario();
-    @Output() aoCadastrar = new EventEmitter<Usuario>();
+    public usuario = new Usuario();
 
-    constructor(private service: UsuarioService){};
-    
+    @Output() aoCadastrar = new EventEmitter<string>();
+
+    constructor(private service: UsuarioService, private router: Router){};
+
     public cadastrar(): void {
-
         this.service.gravar(this.usuario).subscribe(resposta => {
-            this.aoCadastrar.emit(resposta);
-            this.limparCampos();
+        this.aoCadastrar.emit(resposta.cpf);
+        this.limparCampos();
+        this.router.navigateByUrl(`mostrar-usuario/${ resposta.cpf }`);
         });
     }
 

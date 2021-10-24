@@ -1,5 +1,11 @@
-<div class="card border-success m-1" [hidden]="!usuario.name">
-  <div class="card-header text-success text-center">Usuário cadastrado!</div>
+<div class="card m-1 text-white bg-info">
+  <div class="card-body">
+    <h3 class="font-italic">Dados do usuário</h3>
+  </div>
+</div>
+
+<div class="card border-info m-1" [hidden]="!usuario.name">
+<!-- <div class="card-header text-center text-info">{{ cardHeader }}</div> -->
   <div class="card-body">
       <ul class="list-group list-group-flush">
       <li class="list-group-item">Nome: {{ usuario.name }}</li>

@@ -16,4 +16,8 @@ export class UsuarioService {
     public gravar(usuario: Usuario): Observable<Usuario> {
         return this.http.post<Usuario>(this.usersUrl, usuario);
     }
+
+    public pesquisarPorCpf(cpf: string): Observable<Usuario> {
+      return this.http.get<Usuario>(this.usersUrl.concat(`/${ cpf }`));
+    }
 }
