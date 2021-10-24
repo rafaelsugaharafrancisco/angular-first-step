@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { BemVindoComponent } from './bem-vindo/bemvindo.component';
 import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
 import { UsuarioService } from './service/usuario.service';
+import { MostraUsuarioComponent } from './mostra-usuario/mostra-usuario.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BemVindoComponent,
-    NovoUsuarioComponent
+    NovoUsuarioComponent,
+    MostraUsuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -10,14 +10,14 @@ import { Usuario } from '../model/usuario';
 export class NovoUsuarioComponent {
 
     private usuario = new Usuario();
-    @Output() aoTransferir = new EventEmitter<Usuario>();
+    @Output() aoCadastrar = new EventEmitter<Usuario>();
 
     constructor(private service: UsuarioService){};
     
     public cadastrar(): void {
 
         this.service.gravar(this.usuario).subscribe(resposta => {
-            this.aoTransferir.emit(resposta);
+            this.aoCadastrar.emit(resposta);
             this.limparCampos();
         });
     }

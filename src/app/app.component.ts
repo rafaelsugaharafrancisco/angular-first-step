@@ -11,7 +11,7 @@ export class AppComponent {
 
   private usuario = new Usuario();
 
-  public mostraUsuario($event): void {
+  public exibirNovoUsuario($event): void {
     this.usuario = $event;
     console.log(this.usuario);
   }
