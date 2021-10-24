@@ -9,10 +9,12 @@ import { Usuario } from './model/usuario';
 })
 export class AppComponent {
 
-  private usuario = new Usuario();
+  public usuario = new Usuario();
+  public usuarios = new Array<Usuario>();
 
   public exibirNovoUsuario($event): void {
     this.usuario = $event;
+    this.usuarios.push($event);
     console.log(this.usuario);
   }
 }

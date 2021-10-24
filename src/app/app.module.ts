@@ -9,6 +9,7 @@ import { BemVindoComponent } from './bem-vindo/bemvindo.component';
 import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
 import { UsuarioService } from './service/usuario.service';
 import { MostraUsuarioComponent } from './mostra-usuario/mostra-usuario.component';
+import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MostraUsuarioComponent } from './mostra-usuario/mostra-usuario.componen
     AppComponent,
     BemVindoComponent,
     NovoUsuarioComponent,
-    MostraUsuarioComponent
+    MostraUsuarioComponent,
+    ListaUsuarioComponent
   ],
   imports: [
     BrowserModule,

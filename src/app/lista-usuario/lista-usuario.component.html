@@ -1,0 +1,18 @@
+<div class="card m-1">
+  <table class="table table-bordered table-hover">
+    <thead class="thead-light">
+      <th>Nome</th>
+      <th>E-mail</th>
+      <th>CPF</th>
+      <th>Data de Nascimento</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.name }}</td>
+        <td>{{ usuario.email }}</td>
+        <td>{{ usuario.cpf }}</td>
+        <td>{{ usuario.birthDate | date: 'dd/MM/yyyy'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
