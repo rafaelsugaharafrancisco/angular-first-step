@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Erro } from '../model/erro';
 
 import { Usuario } from '../model/usuario';
 import { UsuarioService } from '../service/usuario.service';
@@ -14,7 +15,6 @@ export class MostraUsuarioComponent implements OnInit {
 //  @Input() usuario: Usuario;
   public usuario = new Usuario();
   public cpf: string;
-  public cardHeader = 'Dados do usuário:'
 
   constructor(private usuarioService: UsuarioService, private route: ActivatedRoute){}
 
@@ -24,6 +24,10 @@ export class MostraUsuarioComponent implements OnInit {
 
     this.usuarioService.pesquisarPorCpf(this.cpf).subscribe(resposta => {
       this.usuario = resposta;
-    });
+    },
+    (error => {
+      this.usuario = null;
+      console.error(error);
+    }));
   }
 }

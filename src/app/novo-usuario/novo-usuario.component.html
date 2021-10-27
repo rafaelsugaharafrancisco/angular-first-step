@@ -4,22 +4,46 @@
     <form class="card-body" #form="ngForm" (ngSubmit)="cadastrar()">
         <div class="form-group">
             <label for="nome">Nome</label>
-            <input class="form-control"id="nome" type="text" name="nome" [(ngModel)]="usuario.name"/>
+            <input class="form-control"id="nome" type="text" name="nome" required
+                  [(ngModel)]="usuario.name"
+                  #campoNome="ngModel"/>
+            <u-erros-de-formulario
+                *ngIf="campoNome.invalid && campoNome.touched"
+                mensagem="Nome inválido">
+            </u-erros-de-formulario>
         </div>
         <div class="form-group">
             <label for="email">E-mail</label>
-            <input class="form-control" id="email" type="email" name="email" [(ngModel)]="usuario.email"/>
+            <input class="form-control" id="email" type="email" name="email" required
+                [(ngModel)]="usuario.email"
+                #campoEmail="ngModel"/>
+                <u-erros-de-formulario
+                *ngIf="campoEmail.invalid && campoEmail.touched"
+                mensagem="E-mail inválido">
+            </u-erros-de-formulario>
         </div>
         <div class="form-group">
             <label for="cpf">CPF</label>
-            <input class="form-control" id="cpf" type="text" name="cpf" [(ngModel)]="usuario.cpf"/>
+            <input class="form-control" id="cpf" type="text" name="cpf" required
+                [(ngModel)]="usuario.cpf"
+                #campoCpf="ngModel"/>
+            <u-erros-de-formulario
+                *ngIf="campoCpf.invalid && campoCpf.touched"
+                mensagem="Cpf inválido">
+            </u-erros-de-formulario>
         </div>
         <div class="form-group">
             <label for="dataNascimento">Data de Nascimento</label>
-            <input class="form-control" id="dataNascimento" type="date" name="dataNascimento" [(ngModel)]="usuario.birthDate"/>
+            <input class="form-control" id="dataNascimento" type="date" name="dataNascimento" required
+                [(ngModel)]="usuario.birthDate"
+                #campoDataNascimento="ngModel"/>
+            <u-erros-de-formulario
+                *ngIf="campoDataNascimento.invalid && campoDataNascimento.touched"
+                mensagem="Data Nascimento inválido">
+            </u-erros-de-formulario>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Cadastrar</button>
         </div>
     </form>
 </div>

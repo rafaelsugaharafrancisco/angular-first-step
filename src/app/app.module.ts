@@ -15,18 +15,20 @@ import { PesquisaUsuarioComponent } from './pesquisa-usuario/pesquisa-usuario.co
 
 import { RoutingModule } from './app-routing.module';
 import { SubtituloComponent } from './subtitulo/subtitulo.component';
+import { ErrosDeFormularioComponent } from './erros-de-formulario/erros-de-formulario.component';
 
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     BemVindoComponent,
     NovoUsuarioComponent,
     MostraUsuarioComponent,
     ListaUsuarioComponent,
     PesquisaUsuarioComponent,
-    SubtituloComponent
+    SubtituloComponent,
+      ErrosDeFormularioComponent
    ],
   imports: [
     BrowserModule,

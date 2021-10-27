@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'mostrar-usuario/:cpf', component: MostraUsuarioComponent },
   { path: 'pesquisar-usuario', component: PesquisaUsuarioComponent },
   { path: 'cadastrar-usuario', component: NovoUsuarioComponent },
-  { path: '', component: BemVindoComponent }
+  { path: 'bem-vindo', component: BemVindoComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'bem-vindo' }
 ];
 
 @NgModule({
