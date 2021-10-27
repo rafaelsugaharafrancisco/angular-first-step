@@ -14,6 +14,7 @@ import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
 import { PesquisaUsuarioComponent } from './pesquisa-usuario/pesquisa-usuario.component';
 
 import { RoutingModule } from './app-routing.module';
+import { SubtituloComponent } from './subtitulo/subtitulo.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -24,7 +25,8 @@ registerLocaleData(localePt, 'pt');
     NovoUsuarioComponent,
     MostraUsuarioComponent,
     ListaUsuarioComponent,
-    PesquisaUsuarioComponent
+    PesquisaUsuarioComponent,
+    SubtituloComponent
    ],
   imports: [
     BrowserModule,
