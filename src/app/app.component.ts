@@ -9,7 +9,7 @@ import { Usuario } from './model/usuario';
 })
 export class AppComponent {
 
-  public usuario = new Usuario();
+  public usuario: Usuario;
   public usuarios = new Array<Usuario>();
 
   public exibirNovoUsuario($event): void {

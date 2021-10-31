@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Erro } from '../model/erro';
+import { catchError } from 'rxjs/operators';
 
+import { Erro } from '../model/erro';
 import { Usuario } from '../model/usuario';
 import { UsuarioService } from '../service/usuario.service';
 
@@ -13,10 +14,12 @@ import { UsuarioService } from '../service/usuario.service';
 export class MostraUsuarioComponent implements OnInit {
 
 //  @Input() usuario: Usuario;
-  public usuario = new Usuario();
+  public usuario: Usuario;
+  public erro: Erro;
   public cpf: string;
 
-  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute){}
+  constructor(private usuarioService: UsuarioService,
+    private route: ActivatedRoute){}
 
   ngOnInit(): void {
 
@@ -25,9 +28,8 @@ export class MostraUsuarioComponent implements OnInit {
     this.usuarioService.pesquisarPorCpf(this.cpf).subscribe(resposta => {
       this.usuario = resposta;
     },
-    (error => {
-      this.usuario = null;
-      console.error(error);
-    }));
+    HttpError => {
+      this.erro = HttpError.error;
+    });
   }
 }

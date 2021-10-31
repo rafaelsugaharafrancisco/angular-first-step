@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import  localePt  from '@angular/common/locales/pt';
@@ -20,7 +20,7 @@ import { ErrosDeFormularioComponent } from './erros-de-formulario/erros-de-formu
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     BemVindoComponent,
     NovoUsuarioComponent,
@@ -35,7 +35,8 @@ registerLocaleData(localePt, 'pt');
     HttpClientModule,
     FormsModule,
     CommonModule,
-    RoutingModule
+    RoutingModule,
+    ReactiveFormsModule
   ],
   providers: [UsuarioService,
     {provide: LOCALE_ID, useValue: 'pt'}

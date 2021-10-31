@@ -1,3 +1,4 @@
-export class Erro {
+export interface Erro {
+  field: string;
   message: string;
 }

@@ -1,49 +1,89 @@
 <u-subtitulo texto="Cadastrar usuário"></u-subtitulo>
 
+<div *ngIf="erro"
+  class="alert alert-danger alert-dismissible fade show m-1" role="alert">
+  <strong>{{ erro[0].message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 <div class="card m-1">
-    <form class="card-body" #form="ngForm" (ngSubmit)="cadastrar()">
+    <!-- <form class="card-body" #form="ngForm" (ngSubmit)="cadastrar()"> -->
+    <form class="card-body" [formGroup]="usuarioForm" (submit)="cadastrar()">
         <div class="form-group">
             <label for="nome">Nome</label>
-            <input class="form-control"id="nome" type="text" name="nome" required
-                  [(ngModel)]="usuario.name"
-                  #campoNome="ngModel"/>
+            <input class="form-control" id="nome" type="text" formControlName="name"
+                    placeholder="Ex.: Fulano Beltrano de Ciclano"/>
             <u-erros-de-formulario
-                *ngIf="campoNome.invalid && campoNome.touched"
+                *ngIf="usuarioForm.get('name')?.errors?.required && usuarioForm.get('name')?.touched"
                 mensagem="Nome inválido">
             </u-erros-de-formulario>
+            <!-- <input class="form-control"id="nome" type="text" name="nome" required
+                  [(ngModel)]="usuario.name"
+                  #campoNome="ngModel"/> -->
+            <!-- <u-erros-de-formulario
+                *ngIf="campoNome.invalid && campoNome.touched"
+                mensagem="Nome inválido">
+            </u-erros-de-formulario> -->
         </div>
         <div class="form-group">
             <label for="email">E-mail</label>
-            <input class="form-control" id="email" type="email" name="email" required
+            <input class="form-control" id="email" type="email" formControlName="email"
+                    placeholder="Ex.: email@emil.com"/>
+            <!-- <input class="form-control" id="email" type="email" name="email" required
                 [(ngModel)]="usuario.email"
                 #campoEmail="ngModel"/>
                 <u-erros-de-formulario
                 *ngIf="campoEmail.invalid && campoEmail.touched"
                 mensagem="E-mail inválido">
+            </u-erros-de-formulario> -->
+            <u-erros-de-formulario
+                *ngIf="usuarioForm.get('email')?.errors?.required &&
+                       usuarioForm.get('email')?.touched"
+                mensagem="E-mail inválido">
             </u-erros-de-formulario>
+            <u-erros-de-formulario
+                *ngIf="usuarioForm.get('email')?.errors?.email &&
+                      usuarioForm.get('email')?.touched"
+                mensagem="E-mail no formato inválido">
+        </u-erros-de-formulario>
         </div>
         <div class="form-group">
             <label for="cpf">CPF</label>
-            <input class="form-control" id="cpf" type="text" name="cpf" required
+            <input class="form-control" id="cpf" type="text" formControlName="cpf"
+                   placeholder="Ex.: 999.999.999-99"/>
+            <!-- <input class="form-control" id="cpf" type="text" name="cpf" required
                 [(ngModel)]="usuario.cpf"
                 #campoCpf="ngModel"/>
             <u-erros-de-formulario
                 *ngIf="campoCpf.invalid && campoCpf.touched"
                 mensagem="Cpf inválido">
+            </u-erros-de-formulario> -->
+            <u-erros-de-formulario
+                *ngIf="usuarioForm.get('cpf')?.errors?.required &&
+                      usuarioForm.get('cpf')?.touched"
+                mensagem="CPF inválido">
             </u-erros-de-formulario>
         </div>
         <div class="form-group">
             <label for="dataNascimento">Data de Nascimento</label>
-            <input class="form-control" id="dataNascimento" type="date" name="dataNascimento" required
+            <input class="form-control" id="dataNascimento" type="date" formControlName="birthDate"/>
+            <!-- <input class="form-control" id="dataNascimento" type="date" name="dataNascimento" required
                 [(ngModel)]="usuario.birthDate"
                 #campoDataNascimento="ngModel"/>
             <u-erros-de-formulario
                 *ngIf="campoDataNascimento.invalid && campoDataNascimento.touched"
                 mensagem="Data Nascimento inválido">
+            </u-erros-de-formulario> -->
+            <u-erros-de-formulario
+                *ngIf="usuarioForm.get('birthDate')?.errors?.required &&
+                      usuarioForm.get('birthDate')?.touched"
+                mensagem="Data nascimento inválido">
             </u-erros-de-formulario>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Cadastrar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">Cadastrar</button>
         </div>
     </form>
 </div>

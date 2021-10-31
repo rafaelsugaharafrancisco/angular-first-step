@@ -1,7 +1,7 @@
-export class Usuario {
-    
-        public name: string
-        public email: string
-        public cpf: string
-        public birthDate: Date
+export interface Usuario {
+
+        name: string
+        email: string
+        cpf: string
+        birthDate: Date
 }

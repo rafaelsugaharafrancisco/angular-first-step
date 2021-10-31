@@ -1,27 +1,43 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { UsuarioService } from "../service/usuario.service";
 import { Usuario } from '../model/usuario';
-
+import { Erro } from "../model/erro";
 
 @Component({
     selector: 'u-novo-usuario',
     templateUrl: './novo-usuario.component.html'
 })
-export class NovoUsuarioComponent {
+export class NovoUsuarioComponent implements OnInit {
 
-    public usuario = new Usuario();
+    private usuario: Usuario;
+    public usuarioForm: FormGroup;
+    public erro: Array<Erro>;
 
-    @Output() aoCadastrar = new EventEmitter<string>();
+//    @Output() aoCadastrar = new EventEmitter<string>();
 
-    constructor(private service: UsuarioService, private router: Router){};
+    constructor(private service: UsuarioService,
+      private router: Router,
+      private formBuilder: FormBuilder){}
+
+    ngOnInit(): void {
+      this.usuarioForm = this.formBuilder.group({
+        name:['', [Validators.required] ],
+        email:['',[Validators.required, Validators.email] ],
+        cpf:['', [Validators.required] ],
+        birthDate:['', [Validators.required] ]
+      });
+    }
 
     public cadastrar(): void {
+        this.usuario = this.usuarioForm.getRawValue() as Usuario;
         this.service.gravar(this.usuario).subscribe(resposta => {
-        this.aoCadastrar.emit(resposta.cpf);
-        this.limparCampos();
-        this.router.navigateByUrl(`mostrar-usuario/${ resposta.cpf }`);
+          this.router.navigateByUrl(`mostrar-usuario/${ resposta.cpf }`);
+        },
+        httpError => {
+          this.erro = httpError.error
         });
     }
 
